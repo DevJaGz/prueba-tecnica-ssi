@@ -2,7 +2,9 @@
 ### Realizado por: Julian Andres Gomez Gomez 
 
 ## Installation
-
+<div align="center">
+<img src="repo/readme.gif"/ >
+</div>
 
 ```sh
 git clone  <url-repo>
