@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { TyperComponent } from './shared/typer/typer.component';
 import { PatientsComponent } from './patients/patients.component';
 import { PatientDetailComponent } from './patient-detail/patient-detail.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { PatientDetailComponent } from './patient-detail/patient-detail.componen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

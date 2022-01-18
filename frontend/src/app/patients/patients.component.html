@@ -1,3 +1,22 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Patologías</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let pathology of pathologies">{{pathology.name}}</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="container-fluid mt-5 overflow-auto">
   <h1 class="text-center my-4">Pacientes</h1>
   <table class="table">
@@ -22,7 +41,9 @@
           <!-- <i class="fas fa-eye btn"></i> -->
 
         </th>
-        <td class="text-center"><i class="fas fa-sign-in-alt btn"></i></td>
+        <td class="text-center"><i (click)="showPathologies(patient.pathologies)" data-bs-toggle="modal"
+             data-bs-target="#exampleModal" class="fas fa-sign-in-alt btn"></i>
+        </td>
         <td>{{patient.documentType}}</td>
         <td>{{patient.documentId}}</td>
         <td>{{patient.firstName}}</td>
@@ -35,5 +56,6 @@
 
 </div>
 <div class="text-center">
-  <button class="btn btn-secondary"> <span><i class="fas fa-plus-square"></i></span> Nuevo Paciente</button>
+  <button class="btn btn-secondary" routerLink="/patient-detail"> <span><i class="fas fa-plus-square"></i></span> Nuevo
+    Paciente</button>
 </div>
