@@ -1,0 +1,37 @@
+:host {
+  --cursorColor: #000000;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  background-color: var(--cursorColor);
+  margin-left: 0.1rem;
+  animation: slide 1s infinite;
+}
+
+.typing {
+  animation: none;
+}
+
+@keyframes slide {
+  0% {
+    background-color: var(--cursorColor);
+  }
+
+  49% {
+    background-color: var(--cursorColor);
+  }
+
+  50% {
+    background-color: transparent;
+  }
+
+  99% {
+    background-color: transparent;
+  }
+
+  100% {
+    background-color: var(--cursorColor);
+  }
+}

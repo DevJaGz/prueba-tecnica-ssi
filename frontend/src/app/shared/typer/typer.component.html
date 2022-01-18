@@ -1,0 +1,8 @@
+<span>
+  <div [ngClass]="introMessageClasses" class="scalein animation-duration-500" *ngIf="showIntroMessage && introMessage">
+    {{introMessageContent}}
+  </div>
+  <span *ngIf="textArray">
+    {{textShown}}<span [ngClass]="{'typing': typing}" class="cursor" *ngIf="showCursor">&nbsp;</span>
+  </span>
+</span>
