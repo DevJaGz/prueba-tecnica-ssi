@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PatientsService } from '../services/patients.service';
+import { IPatient } from '../interfaces/patient';
 
 @Component({
   selector: 'app-patients',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientsComponent implements OnInit {
 
-  constructor() { }
+
+  patients: IPatient[] = []
+  constructor(private _patientsSerive: PatientsService) { }
 
   ngOnInit(): void {
+    this.getPatients();
+  }
+
+  getPatients(): void {
+
+    this._patientsSerive.getPatients().subscribe({
+      next: (res) => {
+        this.patients = res;
+      },
+      error: (err) => {
+        console.error("ERROR:", err);
+
+      },
+      complete: () => { }
+    })
+
+  }
+
+  deletePatient(id: string | undefined): void {
+
   }
 
 }

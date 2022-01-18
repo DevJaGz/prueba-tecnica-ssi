@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { IPatient } from '../interfaces/patient';
 
 
 @Injectable({
@@ -7,9 +9,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PatientsService {
 
+  private baseUrl: string = environment.baseUrl;
   constructor(private _http: HttpClient) { }
 
-  getPacientes() {
-
+  getPatients() {
+    const url = `${this.baseUrl}/patients`
+    return this._http.get<IPatient[]>(url)
   }
 }
