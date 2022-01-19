@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IPatient } from '../interfaces/patient';
 import { IPathology } from '../interfaces/pathology';
+import { PathologiesService } from '../services/pathologies.service';
 
 @Component({
   selector: 'app-patient-detail',
@@ -10,7 +11,7 @@ import { IPathology } from '../interfaces/pathology';
 export class PatientDetailComponent implements OnInit {
   patient: IPatient = {
     documentType: "Cc",
-    documentId: 0,
+    documentId: null,
     firstName: "",
     secondName: "",
     firstSurname: "",
@@ -18,12 +19,28 @@ export class PatientDetailComponent implements OnInit {
     pathologies: []
   }
 
-  pathology: string = ""
+
   pathologies: IPathology[] = []
-  
-  constructor() { }
+
+  constructor(private _pathologiesService: PathologiesService) { }
 
   ngOnInit(): void {
+    this.getPathologies()
+  }
+
+  getPathologies(): void {
+    this._pathologiesService.getPathologies().subscribe({
+      next: (res) => {
+        this.pathologies = res;
+        console.log(JSON.stringify(res, null, 2));
+
+      },
+      error: (err) => {
+        console.error("ERROR:", err);
+
+      },
+      complete: () => { }
+    })
   }
 
 }

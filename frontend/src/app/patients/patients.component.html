@@ -3,7 +3,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Patologías</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Patologías del paciente <b>{{patientName | titlecase}}</b></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -41,7 +41,7 @@
           <!-- <i class="fas fa-eye btn"></i> -->
 
         </th>
-        <td class="text-center"><i (click)="showPathologies(patient.pathologies)" data-bs-toggle="modal"
+        <td class="text-center"><i (click)="showPathologies(patient)" data-bs-toggle="modal"
              data-bs-target="#exampleModal" class="fas fa-sign-in-alt btn"></i>
         </td>
         <td>{{patient.documentType}}</td>

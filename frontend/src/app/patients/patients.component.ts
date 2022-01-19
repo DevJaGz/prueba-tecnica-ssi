@@ -18,8 +18,9 @@ export class PatientsComponent implements OnInit {
   patients: IPatient[] = []
   pathologies: IPathology[] = []
   showModal = false;
+  patientName = ""
 
-  constructor(private _patientsSerive: PatientsService, private _pathologiesService: PathologiesService) { }
+  constructor(private _patientsService: PatientsService, private _pathologiesService: PathologiesService) { }
 
   ngOnInit(): void {
     this.getPatients();
@@ -27,10 +28,10 @@ export class PatientsComponent implements OnInit {
 
   getPatients(): void {
 
-    this._patientsSerive.getPatients().subscribe({
+    this._patientsService.getPatients().subscribe({
       next: (res) => {
         this.patients = res;
-        console.log(JSON.stringify(res, null, 2));
+        // console.log(JSON.stringify(res, null, 2));
 
       },
       error: (err) => {
@@ -46,18 +47,9 @@ export class PatientsComponent implements OnInit {
 
   }
 
-  showPathologies(pathologies: string[]): void {
-    this._pathologiesService.getPathologies(pathologies).subscribe({
-      next: (res) => {
-        this.pathologies = res;
-        console.log(JSON.stringify(res, null, 2));
-      },
-      error: (err) => {
-        console.error("ERROR:", err);
-
-      },
-      complete: () => { }
-    })
+  showPathologies(patient: IPatient): void {
+    this.pathologies = patient.pathologies;
+    this.patientName = `${patient.firstName} ${patient.secondName} ${patient.firstSurname} ${patient.secondSurname}`
   }
 
 }

@@ -13,7 +13,7 @@ export class PatientsService {
   constructor(private _http: HttpClient) { }
 
   getPatients() {
-    const url = `${this.baseUrl}/patients`
+    const url = `${this.baseUrl}/patient-list/`
     return this._http.get<IPatient[]>(url)
   }
 }
