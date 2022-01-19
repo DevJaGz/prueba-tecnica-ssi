@@ -9,7 +9,7 @@
 
 ## Requerimientos:
 - Python 3.8+
-- node 13+ 
+- Node 13+ 
 - Angular CLI 12+
 - Mongo DB [Locally](https://www.mongodb.com/try/download/community?tck=docs_server) 
 
@@ -67,7 +67,7 @@ npm install
 ng s --host 127.0.0.1 --port 4200
 ```
 ## Uso
-1. Diríjase al navegador y escriba ` 127.0.0.1:8000/admin/`
+1. Diríjase al navegador y escriba `http://127.0.0.1:8000/admin/`
 > Se abríra el panel de administrador de django. Ingrese el usuario y la contraseña que registro al crear el usuario. En la parte superior izquierda encontrará el modelo de patologías (Pathologys), como se observa a continuación.
 
 <div align="center">
