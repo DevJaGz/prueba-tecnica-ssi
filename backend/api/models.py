@@ -20,9 +20,9 @@ class Patient(models.Model):
     documentType = models.CharField(max_length=150)
     documentId = models.IntegerField()
     firstName = models.CharField(max_length=150)
-    secondName = models.CharField(max_length=150)
-    firstSurname = models.CharField(max_length=150)
-    secondSurname = models.CharField(max_length=150)
+    secondName = models.CharField(max_length=150, blank=True)
+    firstSurname = models.CharField(max_length=150, blank=True)
+    secondSurname = models.CharField(max_length=150, blank=True)
     pathologies = models.ManyToManyField(Pathology, blank=True)
 
     def __str__(self):

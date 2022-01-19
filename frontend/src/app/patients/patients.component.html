@@ -35,7 +35,7 @@
           <th scope="col">Segundo Apellido</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="patients && patients.length > 0">
         <tr *ngFor="let patient of patients">
           <th class="text-center" style="width: 150px;">
 
@@ -47,7 +47,7 @@
           <td class="text-center"><i (click)="showPathologies(patient)" data-bs-toggle="modal"
                data-bs-target="#exampleModal" class="fas fa-sign-in-alt btn text-light"></i>
           </td>
-          <td>{{patient.documentType}}</td>
+          <td>{{getDocumentType(patient)}}</td>
           <td>{{patient.documentId}}</td>
           <td>{{patient.firstName}}</td>
           <td>{{patient.secondName}}</td>

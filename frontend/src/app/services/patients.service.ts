@@ -18,6 +18,11 @@ export class PatientsService {
     return this._http.get<IPatient[]>(url)
   }
 
+  getPatient(id: string | undefined): Observable<IPatient> {
+    const url = `${this.baseUrl}/patient-detail/${id}/`
+    return this._http.get<IPatient>(url)
+  }
+
   createPatient(patient: IPatient): Observable<IPatient> {
     const url = `${this.baseUrl}/patient-create/`
     return this._http.post<IPatient>(url, patient)
@@ -26,6 +31,11 @@ export class PatientsService {
   deletePatient(id: string | undefined): Observable<IPatient> {
     const url = `${this.baseUrl}/patient-delete/${id}/`
     return this._http.delete<IPatient>(url)
+  }
+
+  updatePatient(patient: IPatient, id: string | null): Observable<IPatient> {
+    const url = `${this.baseUrl}/patient-update/${id}/`
+    return this._http.put<IPatient>(url, patient)
   }
 
 

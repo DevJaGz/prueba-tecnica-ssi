@@ -1,25 +1,26 @@
-<h1 class=" my-5 text-center fw-bold">Agregar nuevo paciente</h1>
+<h1 *ngIf="id!= null" class=" my-5 text-center fw-bold">Editar Paciente</h1>
+<h1 *ngIf="id == null" class=" my-5 text-center fw-bold">Agregar nuevo paciente</h1>
 <div class="my-5 ">
   <div class="card bg-dark text-light  px-5 py-5 ">
 
 
 
-    <form #patientForm="ngForm" (ngSubmit)="onSubmit()">
+    <form #patientForm="ngForm" (ngSubmit)="onSubmit(patientForm)">
 
       <div class="row">
         <div class="col-12 col-lg-4">
           <label for="firstNameId" class="form-label">Tipo de documento</label>
           <select class="form-control mb-3" ngModel="Cc" name="documentType" [(ngModel)]="patient.documentType"
                   required>
-            <option value="Cc">C.c.</option>
-            <option value="Ce">C.e.</option>
-            <option value="Ti">T.i.</option>
+            <option *ngFor="let documentType of documentsType" [value]="documentType.value">{{documentType.label}}.
+            </option>
           </select>
 
         </div>
         <div class="col-12 col-lg-4">
           <label for="firstNameId" class="form-label">Primer Nombre</label>
-          <input type="text" class="form-control mb-3" id="firstNameId" [(ngModel)]="patient.firstName" name="firstName"
+          <input type="text" #firstName="ngModel" class="form-control mb-3" id="firstNameId"
+                 [(ngModel)]="patient.firstName" name="firstName"
                  aria-describedby="emailHelp"
                  required>
         </div>
@@ -27,29 +28,30 @@
           <label for="secondNameId" class="form-label">Segundo Nombre</label>
           <input type="text" class="form-control mb-3" id="secondNameId" [(ngModel)]="patient.secondName"
                  name="secondName"
-                 aria-describedby="emailHelp"
-                 required>
+                 aria-describedby="emailHelp">
         </div>
       </div>
       <div class="row">
         <div class="col-12 col-lg-4"> <label for="documentId" class="form-label">Número de documento</label>
-          <input type="number" min="0" class="form-control mb-3" id="documentId" [(ngModel)]="patient.documentId"
-                 name="documentId"
-                 required>
+          <input type="number" min="0" class="form-control mb-3" id="documentId" #documentId="ngModel"
+                 [(ngModel)]="patient.documentId"
+                 name="documentId" required>
+          <div *ngIf="documentId.invalid && documentId.touched"><small class="text-danger">*El número de documento es
+              obligatorio</small></div>
+          <div *ngIf="firstName.invalid && firstName.touched"><small class="text-danger">*El primer nombre es
+              obligatorio</small> </div>
         </div>
         <div class="col-12 col-lg-4">
           <label for="firstSurnameId" class="form-label">Primer Apellido</label>
           <input type="text" class="form-control mb-3" id="firstSurnameId" [(ngModel)]="patient.firstSurname"
                  name="firstSurname"
-                 aria-describedby="emailHelp"
-                 required>
+                 aria-describedby="emailHelp">
         </div>
         <div class="col-12 col-lg-4">
           <label for="secondSurnameId" class="form-label">Segundo Apellido</label>
           <input type="text" class="form-control mb-3" id="secondSurnameId" [(ngModel)]="patient.secondSurname"
                  name="secondSurname"
-                 aria-describedby="emailHelp"
-                 required>
+                 aria-describedby="emailHelp">
         </div>
       </div>
       <div class="row mt-2 mt-lg-4" *ngIf="pathologies && pathologies.length > 0">
@@ -64,10 +66,14 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary float-end">Guardar</button>
+      <button type="submit"
+              [ngClass]="{'btn-primary': id == null, 'btn-success':  id != null}"
+              class="btn  float-end">{{(id == null)? 'Guardar': 'Actualizar'}}</button>
     </form>
 
 
   </div>
 </div>
-<pre>{{patient | json}}</pre>
+<!-- <pre>{{patient | json}}</pre> -->
+<h5>Form valid</h5>
+<pre>{{patientForm.valid}}</pre>

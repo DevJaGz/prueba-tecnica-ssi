@@ -4,7 +4,12 @@
 
 export const environment = {
   production: false,
-  baseUrl: "http://127.0.0.1:8000/api"
+  baseUrl: "http://127.0.0.1:8000/api",
+  documentsType: [
+    { label: "Tarjeta de Identidad", value: "1" },
+    { label: "Cédula de Ciudadanía", value: "2" },
+    { label: "Tarjeta de Extranjería", value: "3" },
+  ]
 };
 
 /*

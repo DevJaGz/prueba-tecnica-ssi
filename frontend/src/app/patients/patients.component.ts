@@ -5,6 +5,7 @@ import { PathologiesService } from '../services/pathologies.service';
 import { IPathology } from '../interfaces/pathology';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 
 
@@ -20,7 +21,7 @@ export class PatientsComponent implements OnInit {
   pathologies: IPathology[] = []
   showModal = false;
   patientName = ""
-
+  documentsType = environment.documentsType;
   constructor(private _patientsService: PatientsService, private _router: Router) { }
 
   ngOnInit(): void {
@@ -31,7 +32,10 @@ export class PatientsComponent implements OnInit {
 
     this._patientsService.getPatients().subscribe({
       next: (res) => {
+
+
         this.patients = res;
+
         // console.log(JSON.stringify(res, null, 2));
 
       },
@@ -66,6 +70,13 @@ export class PatientsComponent implements OnInit {
   showPathologies(patient: IPatient): void {
     this.pathologies = patient.pathologies;
     this.patientName = `${patient.firstName} ${patient.secondName} ${patient.firstSurname} ${patient.secondSurname}`
+  }
+
+  getDocumentType(patient: IPatient): string {
+    const documentTypeId = this.documentsType.filter(documentType => documentType.value == patient.documentType)[0]
+    if (documentTypeId?.value) return documentTypeId.label
+    else return "-"
+
   }
 
 }

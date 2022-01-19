@@ -36,6 +36,7 @@ def getPatientsView(request):
     """Sends all patients"""
 
     try:
+
         patients = models.Patient.objects.all()
         if patients:
             # serializer = serializers.PatientSerializer(patients, many=True)
