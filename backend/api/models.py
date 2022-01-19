@@ -21,7 +21,7 @@ class Patient(models.Model):
     secondName = models.CharField(max_length=150)
     firstSurname = models.CharField(max_length=150)
     secondSurname = models.CharField(max_length=150)
-    pathologies = models.ManyToManyField(Pathology)
+    pathologies = models.ManyToManyField(Pathology, blank=True)
 
     def __str__(self):
         return self.firstName

@@ -1,9 +1,10 @@
-<div class="container-fluid my-5">
+<div class="container-fluid my-5" style="max-width: 500px;">
+  <h1 class="container-fluid my-5 text-center">Agregar nuevo paciente</h1>
   <form #patientForm="ngForm">
 
     <div class="mb-3">
-      <select class="form-select form-select-lg mb-3" ngModel="Cc" name="documentType"
-              aria-label=".form-select-lg example" required>
+      <select class="form-select  mb-3" ngModel="Cc" name="documentType" [(ngModel)]="patient.documentType"
+              required>
         <option value="Cc">C.c.</option>
         <option value="Ce">C.e.</option>
         <option value="Ti">T.i.</option>
@@ -11,39 +12,48 @@
     </div>
     <div class="mb-3">
       <label for="documentId" class="form-label">Número de documento</label>
-      <input type="number" min="0" class="form-control" id="documentId" ngModel name="documentId"
-             aria-describedby="emailHelp" required>
-      <div class="form-text text-danger">El número de documento es requerido.</div>
+      <input type="number" min="0" class="form-control" id="documentId" [(ngModel)]="patient.documentId"
+             name="documentId"
+             required>
     </div>
+
     <div class="mb-3">
       <label for="firstNameId" class="form-label">Primer Nombre</label>
-      <input type="text" class="form-control" id="firstNameId" ngModel name="firstName" aria-describedby="emailHelp"
+      <input type="text" class="form-control" id="firstNameId" [(ngModel)]="patient.firstName" name="firstName"
+             aria-describedby="emailHelp"
              required>
-      <div class="form-text text-danger">El primer nombre es requerido.</div>
     </div>
     <div class="mb-3">
       <label for="secondNameId" class="form-label">Segundo Nombre</label>
-      <input type="text" class="form-control" id="secondNameId" ngModel name="secondName" aria-describedby="emailHelp"
+      <input type="text" class="form-control" id="secondNameId" [(ngModel)]="patient.secondName" name="secondName"
+             aria-describedby="emailHelp"
              required>
-      <div class="form-text text-danger">El segundo nombre es requerido.</div>
+
     </div>
 
     <div class="mb-3">
       <label for="firstSurnameId" class="form-label">Primer Apellido</label>
-      <input type="text" class="form-control" id="firstSurnameId" ngModel name="firstSurname"
+      <input type="text" class="form-control" id="firstSurnameId" [(ngModel)]="patient.firstSurname" name="firstSurname"
              aria-describedby="emailHelp"
              required>
-      <div class="form-text text-danger">El primer Apellido es requerido.</div>
     </div>
     <div class="mb-3">
       <label for="secondSurnameId" class="form-label">Segundo Apellido</label>
-      <input type="text" class="form-control" id="secondSurnameId" ngModel name="secondSurname"
+      <input type="text" class="form-control" id="secondSurnameId" [(ngModel)]="patient.secondSurname"
+             name="secondSurname"
              aria-describedby="emailHelp"
              required>
-      <div class="form-text text-danger">El segundo Apellido es requerido.</div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <div class="mb-3">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Patología"
+               aria-describedby="basic-addon2" [(ngModel)]="pathology" name="pathology">
+        <button class="input-group-text btn btn-success" id="basic-addon2">Agregar</button>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
 
 
 
