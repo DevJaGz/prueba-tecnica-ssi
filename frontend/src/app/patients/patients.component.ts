@@ -4,6 +4,7 @@ import { IPatient } from '../interfaces/patient';
 import { PathologiesService } from '../services/pathologies.service';
 import { IPathology } from '../interfaces/pathology';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 
 
 
@@ -20,7 +21,7 @@ export class PatientsComponent implements OnInit {
   showModal = false;
   patientName = ""
 
-  constructor(private _patientsService: PatientsService, private _pathologiesService: PathologiesService) { }
+  constructor(private _patientsService: PatientsService, private _router: Router) { }
 
   ngOnInit(): void {
     this.getPatients();
@@ -44,7 +45,22 @@ export class PatientsComponent implements OnInit {
   }
 
   deletePatient(id: string | undefined): void {
+    this._patientsService.deletePatient(id).subscribe({
+      next: (res) => {
+        this.getPatients()
+        // console.log(JSON.stringify(res, null, 2));
 
+      },
+      error: (err) => {
+        console.error("ERROR:", err);
+
+      },
+      complete: () => { }
+    })
+  }
+
+  editPatient(id: string | undefined): void {
+    this._router.navigate(['/patient-detail', id])
   }
 
   showPathologies(patient: IPatient): void {
