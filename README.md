@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 <div align="center">
-<img src="repo/readme.gif"/ >
+<img src="repo/readme_.gif"/ >
 </div>
 
 
