@@ -1,0 +1,271 @@
+{
+	"info": {
+		"_postman_id": "061eeab0-4a07-4754-857d-235f58afe443",
+		"name": "ssi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "pathology-list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/pathology-list",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pathology-list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patient-delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"documentType\": \"C.c.\",\r\n        \"documentId\": 0,\r\n        \"firstName\": \"Julian\",\r\n        \"secondName\": \"Andres\",\r\n        \"firstSurname\": \"Gomez\",\r\n        \"secondSurname\": \"Gomez\",\r\n        \"pathologies\": [\r\n            \"3d721cec-687f-4fec-98b2-698a8f12bc95\",\r\n            \"8277a163-f5b2-4dbb-bcad-44c08d421834\",\r\n            \"8eb4b25c-9adb-4f59-af15-b4bdc1d95a50\"\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/patient-delete/9fabdeb1-9f9c-4916-95b9-3c805cdf768a/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"patient-delete",
+						"9fabdeb1-9f9c-4916-95b9-3c805cdf768a",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pathology-create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"PATOLOGÍA QUE ES CREADA nueva\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/pathology-create/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pathology-create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pathology-update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"nuevo NOMBRE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/pathology-update/d710648f-c01d-4c2d-a595-71c2eb838f1c",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pathology-update",
+						"d710648f-c01d-4c2d-a595-71c2eb838f1c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pathology-delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/pathology-delete/13034a80-29ee-466d-9264-98a610ed57cd",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pathology-delete",
+						"13034a80-29ee-466d-9264-98a610ed57cd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patient-list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/patient-list/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"patient-list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patient-detail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/patient-detail/9fabdeb1-9f9c-4916-95b9-3c805cdf768a",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"patient-detail",
+						"9fabdeb1-9f9c-4916-95b9-3c805cdf768a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patient-update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"documentType\": \"C.c.\",\r\n    \"documentId\": 0,\r\n    \"firstName\": \"New\",\r\n    \"secondName\": \"Andres\",\r\n    \"firstSurname\": \"Gomez\",\r\n    \"secondSurname\": \"Gomez\",\r\n    \"pathologies\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/patient-update/9fabdeb1-9f9c-4916-95b9-3c805cdf768a/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"patient-update",
+						"9fabdeb1-9f9c-4916-95b9-3c805cdf768a",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "patient-create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"documentType\": \"cc\",\r\n        \"documentId\": 1095815,\r\n        \"firstName\": \"ns\",\r\n        \"secondName\": \"n\",\r\n        \"firstSurname\": \"n\",\r\n        \"secondSurname\": \"n\",\r\n        \"pathologies\": [\r\n            \"39129db8-ad87-4274-9e92-2d9a1f4fc372\"\r\n        ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/patient-create/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"patient-create",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

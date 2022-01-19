@@ -3,6 +3,7 @@ import uuid
 
 
 class Pathology(models.Model):
+    # Mongo already has id but in this case we create one
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=150)
 
@@ -14,6 +15,7 @@ class Pathology(models.Model):
 
 
 class Patient(models.Model):
+    # Mongo already has id but in this case we create one
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     documentType = models.CharField(max_length=150)
     documentId = models.IntegerField()

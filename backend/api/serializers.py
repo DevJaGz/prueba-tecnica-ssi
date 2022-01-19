@@ -11,4 +11,4 @@ class PatientSerializer(serializers.ModelSerializer):
 class PathologySerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Pathology
-        fields = ("id", "name")
+        fields = "__all__"

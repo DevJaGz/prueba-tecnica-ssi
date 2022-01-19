@@ -38,8 +38,18 @@ def getPatientsView(request):
     try:
         patients = models.Patient.objects.all()
         if patients:
-            serializer = serializers.PatientSerializer(patients, many=True)
-            return Response(serializer.data)
+            # serializer = serializers.PatientSerializer(patients, many=True)
+            # return Response(serializer.data)
+            serializer_patient = serializers.PatientSerializer(patients, many=True)
+            for patient in serializer_patient.data:
+                pathologies = []
+                for pathologyId in patient["pathologies"]:
+                    print("...", pathologyId)
+                    pathology = models.Pathology.objects.get(id=pathologyId)
+                    serializer_pathology = serializers.PathologySerializer(pathology, many=False)
+                    pathologies.append(serializer_pathology.data)
+                patient["pathologies"] = pathologies
+            return Response(serializer_patient.data)
         return Response(status.HTTP_404_NOT_FOUND)
     except Exception as e:
         return Response({"Exception": str(e)}, status.HTTP_500_INTERNAL_SERVER_ERROR)
